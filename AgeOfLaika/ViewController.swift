@@ -24,10 +24,17 @@ class ViewController: UIViewController {
     }
 
     @IBAction func convertFromDogYearsToHumanYears(sender: UIButton) {
-        let convertAge = 7;
-        let conversionFromDogYearsToHumanYears = enterDogYears.text.toInt()! * convertAge;
+        var dogYears = enterDogYears.text.toInt()!;
+        let firstTwoYears = 10.5;
+        let afterTwoYears = 4;
         
-        dogYearLabel.text = "\(conversionFromDogYearsToHumanYears)" + " human years";
+        if dogYears <= 2 {
+            dogYearLabel.text = "\(Double(dogYears) * firstTwoYears)";
+        } else {
+            dogYears -= 2;
+            dogYearLabel.text = "\(Double(dogYears * afterTwoYears) + Double(2) * firstTwoYears)" + " human Years";
+        }
+
         enterDogYears.text = "";
         enterDogYears.resignFirstResponder();
     }
